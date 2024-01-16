@@ -1,13 +1,21 @@
+// import fs module
 const fs = require("fs");
+
+// import the path module 
 const path = require('path');
+
+// import the inquirer module
 const inquirer = require("inquirer");
+
+// import the generateMarkdown function from the generateMarkdown.js file in the utils folder
 const generateMarkdown = require("./utils/generateMarkdown");
 
+// Array of licence options for the user to choose from
 const licenseOptions = [
     {
-        name: 'MIT',
+        name: 'MIT', 
         badge: 'https://img.shields.io/badge/License-MIT-blue.svg'
-    },
+    }, 
     {
         name: 'GPL',
         badge: 'https://img.shields.io/badge/License-GPL-blue.svg'
@@ -21,25 +29,29 @@ const licenseOptions = [
         badge: 'https://img.shields.io/badge/License-GNU-blue.svg'
     },
 ];
-// array of questions for user
+
+// Array of questions that will be presented to the user when the program run to store the README data
 const questions = [
 {
+    // The title of my project
     type: 'input',
     name: 'title',
-    message: 'What is the name of your Project?'
-},
+    message: 'What is the title of your Project?'
+}, 
 
-{
+{ // Description
     type: 'input',
     name: 'description',
-    message: 'Project Description:' 
-},
-{
+    message: 'Please provide a description of your Project:', 
+}, 
+
+{ // Installation
     type: 'input',
-    name: 'installation',
-    massage: 'Please explain the installation for you Project:'
+    name: 'installation', 
+    message: 'Please provide installation instructions for your Project:'
 },
 {
+    // Usage
     type: 'input',
     name: 'usage', 
     message: 'Please provide usage instructions for your Project:'
@@ -80,24 +92,28 @@ const questions = [
 }
 ];
 
-
 // function to write README file
+// function writetoFile takes a fileName and data parameter and writes the data to a file the the given name
 function writeToFile(fileName, data) {
 
+    // path.join method to create a file path that is relative to this directory
     const filePath = path.join(__dirname, fileName);
 
-    fs.watchFile(filePath, data, err => {
+    // fs.writeFile method to write the data to the file
+    // if there is an error is logged to the console
+    // else success message
+    fs.writeFile(filePath, data, err => {
         if(err) {
             console.error(err);
-        } else { 
+        } else {
             console.log(`Successfully generated ${fileName}`);
         }
         });
-    
 }
 
 // function to initialize program
 function init() {
+// inquirer prompt method to present the qeustions to the user    
     inquirer.prompt(questions)
     // then generates a markdown file using the user's answers 
     .then(answers => {
@@ -110,8 +126,7 @@ function init() {
     .catch(err => {
         console.error(err);
     });
-
 }
 
-// function call to initialize program
+// function call to initialize program - it starts the program
 init();
