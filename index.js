@@ -1,16 +1,9 @@
-// import fs module
 const fs = require("fs");
-
-// import the path module 
 const path = require('path');
-
-// import the inquirer module
 const inquirer = require("inquirer");
-
-// import the generateMarkdown function from the generateMarkdown.js file in the utils folder
 const generateMarkdown = require("./utils/generateMarkdown");
 
-// Array of licence options for the user to choose from
+// Array of licence options
 const licenseOptions = [
     {
         name: 'MIT', 
@@ -30,7 +23,7 @@ const licenseOptions = [
     },
 ];
 
-// Array of questions that will be presented to the user when the program run to store the README data
+// Array of questions
 const questions = [
 {
     // The title of my project
@@ -91,17 +84,11 @@ const questions = [
     message: 'Which is your email address?',
 }
 ];
-
 // function to write README file
-// function writetoFile takes a fileName and data parameter and writes the data to a file the the given name
 function writeToFile(fileName, data) {
 
-    // path.join method to create a file path that is relative to this directory
     const filePath = path.join(__dirname, fileName);
 
-    // fs.writeFile method to write the data to the file
-    // if there is an error is logged to the console
-    // else success message
     fs.writeFile(filePath, data, err => {
         if(err) {
             console.error(err);
@@ -112,14 +99,12 @@ function writeToFile(fileName, data) {
 }
 
 // function to initialize program
-function init() {
-// inquirer prompt method to present the qeustions to the user    
+function init() {   
     inquirer.prompt(questions)
     // then generates a markdown file using the user's answers 
     .then(answers => {
         console.log('Generating README...');
         const markdown = generateMarkdown(answers);
-        // write it to a file using writeToFile function. 
         writeToFile('README.md', markdown);
     })
     // if there is an error during the process, it is logged to the console
@@ -128,5 +113,5 @@ function init() {
     });
 }
 
-// function call to initialize program - it starts the program
+// function call to initialize program 
 init();

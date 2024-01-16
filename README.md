@@ -27,4 +27,4 @@
   You can test the application by running it and following the prompts to enter your project information, it will then application will generate a README.md file for the project. 
 
   ## Questions
-  If you have any questions about this application, please feel free to contact me directly at kjhohura@gmail.com.
+  If you have any questions about this application, please feel free to contact me directly at Kjhohura@gmail.com.
