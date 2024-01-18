@@ -29,7 +29,7 @@ function generateMarkdown(data) {
   ${data.tests}
 
   ## Questions
-  If you have any questions about this application, please feel free to contact me directly at ${data.email}.
+  If you have any questions about this application, please feel free to contact me directly at ${data.email}. You can find this REPO on ${data.githubUsername}.
 `;
 }
 
