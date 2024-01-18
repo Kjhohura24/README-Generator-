@@ -75,13 +75,13 @@ const questions = [
     // Questions 1 GitHub Username
     type: 'input',
     name: 'githubUsername',
-    message: 'Which is your GitHub username?'
+    message: 'What is your GitHub username?'
 },
 {
     // Questions 2 Email address
     type: 'input',
     name: 'email',
-    message: 'Which is your email address?',
+    message: 'What is your email address?',
 }
 ];
 // function to write README file
